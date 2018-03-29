@@ -15,14 +15,12 @@ export default {
       title: '',
       msg: '',
       closeBtnLabel: '确定',
-      resolve: null,
-      reject: null
+      closeCB: null // 关闭 cb 用以通知 消息队列
     }
   },
   methods: {
     close() {
-      this.show = false
-      this.resolve('confirm')
+      if (typeof this.closeCB == 'function') this.closeCB('confirm')
     }
   }
 }

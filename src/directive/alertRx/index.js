@@ -28,6 +28,11 @@ alert$
   })
 
 /**
+ *
+ *
+ * */
+
+/**
  * 重构opt
  * */
 function reformOpt(opt) {

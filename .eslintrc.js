@@ -61,6 +61,7 @@ module.exports = {
     'no-param-reassign': 0,
     'no-plusplus': 0, // 允许使用 ++
     'curly': 0, // 允许省略 {}
-    'no-use-before-define': 0 // 运行函数 定义前使用
+    'no-use-before-define': 0, // 运行函数 定义前使用
+    'arrow-body-style': 0
   }
 }

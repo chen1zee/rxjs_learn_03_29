@@ -13,9 +13,11 @@
                      :valid="confirmPasswordValid" />
       <!-- 登录模式 -->
       <div v-show="mod == 'login'" class="button-wrap">
-        <mu-raised-button class="btn mr20" label="登 录" primary
+        <mu-flat-button class="btn mr20" label="com" primary
+                        @click="alertTest" />
+        <mu-raised-button class="btn mr20" label="Rx" primary
                           @click="confirmLogin" />
-        <mu-flat-button class="btn" label="去注册" primary
+        <mu-flat-button class="btn" label="CB" primary
                         @click="goToRegister" />
       </div>
       <!-- 注册模式 -->
@@ -49,6 +51,10 @@ export default {
     }
   },
   methods: {
+    alertTest() {
+      this.$alert('first').then(r => console.log(`alert first ${r}`))
+      this.$alert('second').then(r => console.log(`alert second ${r}`))
+    },
     confirmLogin() {
       this.$alertRx('123')
       this.$alertRx('321')
@@ -65,17 +71,17 @@ export default {
       }, 1000)
     },
     goToRegister() {
-      this.$alert('123')
-      this.$alert('321')
-      this.$alert('asd')
-      this.$alert('dsa')
+      this.$alertCB('123')
+      this.$alertCB('321')
+      this.$alertCB('asd')
+      this.$alertCB('dsa')
       setTimeout(() => {
-        this.$alert('setTimeoutA 1')
-        this.$alert('setTimeoutA 2')
-        this.$alert('setTimeoutA 3')
+        this.$alertCB('setTimeoutA 1')
+        this.$alertCB('setTimeoutA 2')
+        this.$alertCB('setTimeoutA 3')
         setTimeout(() => {
-          this.$alert('setTimeoutB 1')
-          this.$alert('setTimeoutB 2')
+          this.$alertCB('setTimeoutB 1')
+          this.$alertCB('setTimeoutB 2')
         }, 2000)
       }, 1000)
     },

@@ -10,6 +10,7 @@ import App from './App'
 import router from './router'
 import loadingDirective from './directive/loading/index'
 import alertDirective from './directive/alert/index'
+import alertDirectiveCB from './directive/alertCB/index'
 import toastDirective from './directive/toast/index'
 import alertDirectiveRx from './directive/alertRx/index'
 
@@ -19,7 +20,9 @@ Vue.config.productionTip = false
 // UI型 指令
 Vue.prototype.$showLoading = loadingDirective.showLoading
 Vue.prototype.$hideLoading = loadingDirective.hideLoading
+
 Vue.prototype.$alert = alertDirective
+Vue.prototype.$alertCB = alertDirectiveCB
 Vue.prototype.$alertRx = alertDirectiveRx
 Vue.prototype.$toast = toastDirective
 // api型 指令

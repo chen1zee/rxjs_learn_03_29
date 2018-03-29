@@ -22,12 +22,12 @@ function _defaultAjax(option) {
       .then(res => {
         if (!res && !res.data) {
           VuePro.$hideLoading()
-          return VuePro.$alert('响应无相关数据')
+          return VuePro.$alertCB('响应无相关数据')
             .then(() => reject({ msg: '响应无相关数据' }))
         }
         if (res.data.code != 200) {
           VuePro.$hideLoading()
-          return VuePro.$alert(res.data.msg || '请求失败')
+          return VuePro.$alertCB(res.data.msg || '请求失败')
             .then(() => {
               reject({
                 code: res.data.code || 10000, // 后台无返回 code
@@ -38,7 +38,7 @@ function _defaultAjax(option) {
         resolve(res.data)
       })
       .catch(err => {
-        VuePro.$alert('请求失败，请稍后再试')
+        VuePro.$alertCB('请求失败，请稍后再试')
         VuePro.$hideLoading()
         reject(err)
       })
