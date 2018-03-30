@@ -16,3 +16,39 @@
  *         -------------
  *
  * */
+
+
+
+
+
+/**
+ * (opt)--open<alert>-------------('confirm')--|
+ *   |                                  |
+ * alert                 ________ <A/>.close
+ *         _____________/
+ *         |
+ * (opt)--*W---open<alert>---------('confirm')--|
+ *   |                                  |
+ * alert                            <A/>.close
+ * */
+
+
+
+
+
+/**
+ * (opt)--open<alert>-------------('confirm')--|
+ *   |                                  |
+ * alert                 ________ <A/>.close
+ *                 _____/
+ *                 |
+ *          <show> |
+ *            ||   |
+ * (opt)-.ps[]--*X |
+ *   |             |
+ * alert           |
+ *                 |
+ *                  -open<alert>---------('confirm')--|
+ *                                            |
+ *                                        <A/>.close
+ * */

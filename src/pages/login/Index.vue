@@ -16,9 +16,9 @@
         <mu-flat-button class="btn mr20" label="com" primary
                         @click="alertTest" />
         <mu-raised-button class="btn mr20" label="Rx" primary
-                          @click="confirmLogin" />
+                          @click="alertRxTest" />
         <mu-flat-button class="btn" label="CB" primary
-                        @click="goToRegister" />
+                        @click="alertCBTest" />
       </div>
       <!-- 注册模式 -->
       <div v-show="mod == 'register'" class="button-wrap">
@@ -52,10 +52,10 @@ export default {
   },
   methods: {
     alertTest() {
-      this.$alert('first').then(r => console.log(`alert first ${r}`))
-      this.$alert('second').then(r => console.log(`alert second ${r}`))
+      this.$alert('工资发放失败').then(r => console.log(`alert first ${r}`))
+      this.$alert('联系HR').then(r => console.log(`alert second ${r}`))
     },
-    confirmLogin() {
+    alertRxTest() {
       this.$alertRx('123')
       this.$alertRx('321')
       this.$alertRx('asd')
@@ -70,7 +70,7 @@ export default {
         }, 2000)
       }, 1000)
     },
-    goToRegister() {
+    alertCBTest() {
       this.$alertCB('123')
       this.$alertCB('321')
       this.$alertCB('asd')
@@ -82,7 +82,7 @@ export default {
         setTimeout(() => {
           this.$alertCB('setTimeoutB 1')
           this.$alertCB('setTimeoutB 2')
-        }, 2000)
+        }, 5000)
       }, 1000)
     },
     confirmRegister() {
@@ -93,7 +93,11 @@ export default {
     }
   },
   mounted() {
-
+    this.$alertRx.get$()
+    // .subscribe(x => {
+    //   console.log('from mounted')
+    //   console.log(x)
+    // })
   },
   components: {
     CompTextField

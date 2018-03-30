@@ -1,11 +1,11 @@
 /**
  * [2]
  *
- * (500) -> 立即 -> (500) -> done(500)
+ * (500) ->  -> (500 - 100) -> done(500)
  *                              /
  *                       -30day-
  *                       |
- * (500) -> 立即 -> (500) -> done(500)
+ * (500) ---> (500 - 100) -> done(500)
  *    ^               ^        |
  *    |               |        |
  *    boss            HR       worker
@@ -20,7 +20,9 @@ const bossPromise = r => {
 bossPromise(500)
   .then(HRHandler)
   .then(workerDone)
+  // .sleepThenContinue('30day')
 
 bossPromise(500)
   .then(HRHandler)
+  // .waitTillPreviousAwake()
   .then(workerDone)

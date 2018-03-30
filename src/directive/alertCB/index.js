@@ -5,7 +5,7 @@ import DirectiveAlert from './DirectiveAlert'
 const AlertConstructor = Vue.extend(DirectiveAlert)
 // 实例 消息队列
 let instance
-const msgQueue = []
+const msgQueue = [] // 多维护了 一个 消息队列
 
 /**
  * @func

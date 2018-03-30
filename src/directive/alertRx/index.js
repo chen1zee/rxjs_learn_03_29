@@ -10,22 +10,28 @@ let instance
 let alertObserver
 
 const alert$ = Rx.Observable.create(observer => { alertObserver = observer })
-const promiseAndSleep$Maker = option => Rx.Observable.fromPromise(new Promise(resolve => {
-  checkShowMsg({ option, resolve })
-})).concat(Rx.Observable.interval(200).take(1))
 
-let timestamp
-alert$
+const promiseAndSleep$Maker = option => {
+  const promise$ = Rx.Observable.fromPromise(new Promise(resolve => {
+    checkShowMsg({ option, resolve })
+  }))
+  const intervalOnce$ = Rx.Observable.interval(200).take(1)
+  return promise$.concat(intervalOnce$)
+}
+
+// let timestamp
+const final$ = alert$
   .map(opt => reformOpt(opt))
   .concatMap(option => promiseAndSleep$Maker(option))
-  .subscribe(x => {
-    console.log(`result is: ${x}`)
-    const nowTimestamp = new Date().getTime()
-    const ms = timestamp ? nowTimestamp - timestamp : 0
-    timestamp = nowTimestamp
-    console.log(`隔  ${ms}`)
-    console.log('==============')
-  })
+  .subscribe()
+  // .subscribe(x => {
+  //   console.log(`result is: ${x}`)
+  //   const nowTimestamp = new Date().getTime()
+  //   const ms = timestamp ? nowTimestamp - timestamp : 0
+  //   timestamp = nowTimestamp
+  //   console.log(`隔  ${ms}`)
+  //   console.log('==============')
+  // })
 
 /**
  *
@@ -69,4 +75,6 @@ function checkShowMsg({ option, resolve }) {
 function alert(opt) {
   alertObserver.next(opt)
 }
+alert.get$ = () => final$
+
 export default alert
